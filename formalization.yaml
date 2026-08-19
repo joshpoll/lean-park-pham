@@ -1,0 +1,150 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/mathlib-initiative/formalization.yaml/main/schema/formalization.schema.json
+# formalization.yaml v0.4
+#
+# This file describes the project as it exists now. Update the status, fidelity,
+# review, alignment, automation cost, and license before a Palomar submission.
+version: "v0.4"
+
+project:
+  name: "The Park-Pham Theorem in Lean"
+  description: >-
+    A Lean 4 formalization project for the Park-Pham expectation-threshold
+    theorem. The planned main route follows Tran and Vu's short inductive proof
+    of the covering theorem, followed by a formal bridge from uniform finite-set
+    levels to Bernoulli thresholds. The repository currently contains a checked
+    Verso Blueprint and dependency graph; it does not yet contain the substantive
+    Lean proof.
+  authors:
+    - "joshpoll"
+  # Palomar's starter project requires Apache-2.0 and a root LICENSE file.
+  # Change this only after the repository owner has explicitly selected a license.
+  license: "UNLICENSED"
+  responsible_maintainers:
+    - "joshpoll"
+
+# This repository is intended to contain the substantive proof development, so
+# no repository.substantive_formalization indirection is declared.
+
+classification:
+  arxiv: ["math.CO"]
+  msc2020: ["05D05", "05D40"]
+
+sources:
+  - title: "A Short Proof of Kahn-Kalai Conjecture"
+    authors:
+      - "Phuc Tran"
+      - "Van Vu"
+    id: "doi:10.37236/12266"
+    type: "journal article"
+    location: >-
+      The Electronic Journal of Combinatorics 31(3) (2024), Paper P3.2;
+      arXiv:2303.02144
+    relationship: "formalizes"
+    note: >-
+      Planned source for the short inductive covering argument. The blueprint
+      separates its double-counting lemma, cost-retention step, level arithmetic,
+      and induction into distinct formalization targets.
+    author_endorsement: "not-contacted"
+  - title: "A Proof of the Kahn-Kalai Conjecture"
+    authors:
+      - "Jinyoung Park"
+      - "Huy Tuan Pham"
+    id: "arXiv:2203.17207"
+    type: "preprint"
+    location: "Theorems 1.1 and 1.2"
+    relationship: "background"
+    note: >-
+      Original proof and theorem statement. The initial formalization route uses
+      the later Tran-Vu simplification rather than formalizing the original
+      iterative proof line by line.
+    author_endorsement: "not-contacted"
+
+related_formalizations: []
+
+status:
+  scope: >-
+    Planning stage. The repository contains a buildable Verso Blueprint with
+    informal statements and proof dependencies for finite set systems, covering
+    cost, the Tran-Vu covering theorem, and the threshold bridge. No mathematical
+    theorem from the papers has yet been stated or proved as a Lean declaration.
+    Challenge.lean, Solution.lean, comparator.json, and Palomar comparison targets
+    will be added only after a substantive result has been proved.
+  sorry_count: 0
+  sorry_in_definitions: 0
+  axioms: []
+  main_results: []
+
+automation:
+  methods:
+    - method: "agent"
+      models: ["GPT-5"]
+      framework: "OpenAI Codex desktop"
+      tool_setup: >-
+        AI-assisted source research, proof decomposition, Verso Blueprint
+        authoring, dependency setup, and local build verification. Lean checks
+        the Blueprint sources and resolves their labels, but it does not certify
+        the informal mathematical statements.
+      cost:
+        wall_time: "not tracked"
+        spend_usd: "subscription-based usage; not tracked"
+        hardware: "local Apple Silicon machine with hosted model inference"
+      prompting_notes: >-
+        The maintainer requested a learning-oriented formalization of the
+        Park-Pham theorem and a dependency blueprint based on a newer simplified
+        proof. The agent proposed the Tran-Vu route and created the initial graph.
+    - method: "manual"
+      models: []
+      framework: "Lean 4, mathlib, and Verso Blueprint"
+      tool_setup: >-
+        Human direction, mathematical study, statement auditing, proof review,
+        and final acceptance are expected throughout the project.
+      cost:
+        wall_time: "ongoing"
+        spend_usd: "not tracked"
+        hardware: "local machine"
+      prompting_notes: "n/a"
+  spend_usd: "subscription-based usage; not tracked"
+  notes: >-
+    This metadata will be updated as formal Lean declarations are written. AI
+    contributions, human audits, elapsed effort, and any additional tools or
+    models should be recorded as they occur.
+
+fidelity:
+  divergences: >-
+    No source theorem has yet been formalized, so fidelity has not been audited.
+    The blueprint follows the Tran-Vu proof architecture but currently states
+    some strengthened inductive thresholds and numerical side conditions in
+    descriptive rather than final formal form. The probability bridge and exact
+    treatment of boundary cases also remain to be specified. These are planning
+    gaps, not claimed proved results.
+
+review:
+  status: "unchecked"
+  reviewers: []
+  notes: >-
+    The Blueprint builds and its labels and dependency references resolve. Its
+    mathematical decomposition has not yet received a line-by-line human audit,
+    peer review, or review by the source authors.
+
+alignment:
+  namespace: "ParkPham"
+  statements:
+    - source: "Tran-Vu, Theorem 4 (covering theorem)"
+      lean: ""
+      module: "planned: ParkPham.Covering"
+      status: "not-formalized"
+      note: "Tracked by the blueprint label tran_vu_covering_theorem."
+    - source: "Tran-Vu, Theorem 3 / Park-Pham covering corollary"
+      lean: ""
+      module: "planned: ParkPham.Covering"
+      status: "not-formalized"
+      note: "Tracked by the blueprint label park_pham_covering_corollary."
+    - source: "Park-Pham, Theorem 1.1"
+      lean: ""
+      module: "planned: ParkPham.Threshold"
+      status: "not-formalized"
+      note: "Tracked by the blueprint label park_pham_theorem."
+
+acknowledgements: >-
+  The project uses Lean 4, mathlib, and Verso Blueprint. The proof plan is based
+  on work of Jinyoung Park, Huy Tuan Pham, Phuc Tran, and Van Vu.
