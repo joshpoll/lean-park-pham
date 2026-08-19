@@ -5,6 +5,7 @@ import VersoBlueprint.Commands.Graph
 import VersoBlueprint.Commands.Summary
 import ParkPham.Chapters.Foundations
 import ParkPham.Chapters.FiniteCombinatorics
+import ParkPham.Chapters.CoverCosts
 import ParkPham.Chapters.Covering
 import ParkPham.Chapters.Threshold
 
@@ -25,6 +26,7 @@ computed from the Lean code.
 
 {include 0 ParkPham.Chapters.Foundations}
 {include 0 ParkPham.Chapters.FiniteCombinatorics}
+{include 0 ParkPham.Chapters.CoverCosts}
 {include 0 ParkPham.Chapters.Covering}
 {include 0 ParkPham.Chapters.Threshold}
 

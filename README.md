@@ -38,8 +38,10 @@ lake exe vbp query metadata
 
 ## Layout
 
-- `ParkPham/Chapters/Foundations.lean`: definitions
-- `ParkPham/Chapters/FiniteCombinatorics.lean`: reusable finite lemmas
+- `ParkPham/FiniteSetSystems.lean`: formal finite-set-family API
+- `ParkPham/Chapters/Foundations.lean`: foundational blueprint definitions
+- `ParkPham/Chapters/FiniteCombinatorics.lean`: minimal-family and level lemmas
+- `ParkPham/Chapters/CoverCosts.lean`: covering costs and their basic properties
 - `ParkPham/Chapters/Covering.lean`: Tran–Vu's double count and induction
 - `ParkPham/Chapters/Threshold.lean`: passage to the expectation threshold
 - `ParkPham/Blueprint.lean`: assembled document, graph, and summary
