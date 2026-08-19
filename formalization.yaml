@@ -11,9 +11,9 @@ project:
     A Lean 4 formalization project for the Park-Pham expectation-threshold
     theorem. The planned main route follows Tran and Vu's short inductive proof
     of the covering theorem, followed by a formal bridge from uniform finite-set
-    levels to Bernoulli thresholds. The repository currently contains a checked
-    Verso Blueprint and dependency graph; it does not yet contain the substantive
-    Lean proof.
+    levels to Bernoulli thresholds. The repository contains a checked Verso
+    Blueprint and dependency graph together with the first foundational Lean
+    definitions and structural lemma for finite set families.
   authors:
     - "joshpoll"
   license: "MIT"
@@ -61,12 +61,15 @@ related_formalizations: []
 
 status:
   scope: >-
-    Planning stage. The repository contains a buildable Verso Blueprint with
-    informal statements and proof dependencies for finite set systems, covering
-    cost, the Tran-Vu covering theorem, and the threshold bridge. No mathematical
-    theorem from the papers has yet been stated or proved as a Lean declaration.
-    Challenge.lean, Solution.lean, comparator.json, and Palomar comparison targets
-    will be added only after a substantive result has been proved.
+    Early formalization stage. The repository contains a buildable Verso
+    Blueprint with informal statements and proof dependencies for finite set
+    systems, covering cost, the Tran-Vu covering theorem, and the threshold
+    bridge. The foundational API now defines finite set families, upward
+    closure, and covering; it reuses Mathlib's IsUpperSet for increasing
+    families and proves that upward closures are increasing. No main theorem
+    from the source papers has yet been formalized. Challenge.lean,
+    Solution.lean, comparator.json, and Palomar comparison targets will be added
+    only after a substantive source result has been proved.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []
@@ -79,9 +82,10 @@ automation:
       framework: "OpenAI Codex desktop"
       tool_setup: >-
         AI-assisted source research, proof decomposition, Verso Blueprint
-        authoring, dependency setup, and local build verification. Lean checks
-        the Blueprint sources and resolves their labels, but it does not certify
-        the informal mathematical statements.
+        authoring, foundational Lean API development, dependency setup, and
+        local build verification. Lean checks the linked foundational
+        declarations and the Blueprint sources, but it does not certify the
+        remaining informal mathematical statements.
       cost:
         wall_time: "not tracked"
         spend_usd: "subscription-based usage; not tracked"
@@ -89,7 +93,8 @@ automation:
       prompting_notes: >-
         The maintainer requested a learning-oriented formalization of the
         Park-Pham theorem and a dependency blueprint based on a newer simplified
-        proof. The agent proposed the Tran-Vu route and created the initial graph.
+        proof. The agent proposed the Tran-Vu route, created the initial graph,
+        and assisted with the initial finite-set-family API and Blueprint links.
     - method: "manual"
       models: []
       framework: "Lean 4, mathlib, and Verso Blueprint"
@@ -103,9 +108,9 @@ automation:
       prompting_notes: "n/a"
   spend_usd: "subscription-based usage; not tracked"
   notes: >-
-    This metadata will be updated as formal Lean declarations are written. AI
-    contributions, human audits, elapsed effort, and any additional tools or
-    models should be recorded as they occur.
+    This metadata will be updated as further formal Lean declarations are
+    written. AI contributions, human audits, elapsed effort, and any additional
+    tools or models should be recorded as they occur.
 
 fidelity:
   divergences: >-

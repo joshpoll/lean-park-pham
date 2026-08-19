@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import ParkPham.FiniteSetSystems
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -15,22 +16,22 @@ This chapter fixes the vocabulary that will later become the stable Lean API.
 Definitions for finite set systems and covers.
 :::
 
-:::definition "set_family" (parent := "foundations") (priority := "high")
+:::definition "set_family" (parent := "foundations") (priority := "high") (lean := "ParkPham.SetFamily")
 A *set family* (or hypergraph) on a finite ground set $`X` is a collection
 $`\mathcal H \subseteq 2^X`.
 :::
 
-:::definition "up_closure" (parent := "foundations") (uses := "set_family") (priority := "high")
+:::definition "up_closure" (parent := "foundations") (uses := "set_family") (priority := "high") (lean := "ParkPham.SetFamily.upperClosure")
 The *upward closure* of $`\mathcal H` is
 $`\langle\mathcal H\rangle = \{T\subseteq X : \exists S\in\mathcal H,\ S\subseteq T\}`.
 :::
 
-:::definition "increasing_family" (parent := "foundations") (uses := "set_family")
+:::definition "increasing_family" (parent := "foundations") (uses := "set_family") (lean := "IsUpperSet")
 A family $`\mathcal F` is *increasing* when membership is preserved on passing
 to a superset inside $`X`.
 :::
 
-:::proposition "up_closure_increasing" (parent := "foundations") (uses := "up_closure, increasing_family") (effort := "small") (priority := "high")
+:::proposition "up_closure_increasing" (parent := "foundations") (uses := "up_closure, increasing_family") (effort := "small") (priority := "high") (lean := "ParkPham.upperClosure_isUpperSet")
 For every family $`\mathcal H`, its upward closure
 $`\langle\mathcal H\rangle` is increasing.
 :::
@@ -60,7 +61,7 @@ The density of a family $`\mathcal F` on level $`m` is
 $`c_m(\mathcal F)=|\mathcal F\cap L_m(X)|/|L_m(X)|`.
 :::
 
-:::definition "cover" (parent := "foundations") (uses := "up_closure") (priority := "high")
+:::definition "cover" (parent := "foundations") (uses := "up_closure") (priority := "high") (lean := "ParkPham.Covers")
 A family $`\mathcal G` *covers* $`\mathcal H` when
 $`\mathcal H\subseteq\langle\mathcal G\rangle`.
 :::
