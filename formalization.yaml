@@ -2,7 +2,7 @@
 # formalization.yaml v0.4
 #
 # This file describes the project as it exists now. Update the status, fidelity,
-# review, alignment, automation cost, and license before a Palomar submission.
+# review, alignment, and automation cost before a Palomar submission.
 version: "v0.4"
 
 project:
@@ -16,9 +16,7 @@ project:
     Lean proof.
   authors:
     - "joshpoll"
-  # Palomar's starter project requires Apache-2.0 and a root LICENSE file.
-  # Change this only after the repository owner has explicitly selected a license.
-  license: "UNLICENSED"
+  license: "MIT"
   responsible_maintainers:
     - "joshpoll"
 
