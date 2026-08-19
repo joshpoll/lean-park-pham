@@ -12,8 +12,9 @@ project:
     theorem. The planned main route follows Tran and Vu's short inductive proof
     of the covering theorem, followed by a formal bridge from uniform finite-set
     levels to Bernoulli thresholds. The repository contains a checked Verso
-    Blueprint and dependency graph together with the first foundational Lean
-    definitions and structural lemma for finite set families.
+    Blueprint and dependency graph together with a foundational Lean API for
+    finite set families, covers, weighted cover costs, and their elementary
+    monotonicity and subadditivity properties.
   authors:
     - "joshpoll"
   license: "MIT"
@@ -64,12 +65,15 @@ status:
     Early formalization stage. The repository contains a buildable Verso
     Blueprint with informal statements and proof dependencies for finite set
     systems, covering cost, the Tran-Vu covering theorem, and the threshold
-    bridge. The foundational API now defines finite set families, upward
-    closure, and covering; it reuses Mathlib's IsUpperSet for increasing
-    families and proves that upward closures are increasing. No main theorem
-    from the source papers has yet been formalized. Challenge.lean,
-    Solution.lean, comparator.json, and Palomar comparison targets will be added
-    only after a substantive source result has been proved.
+    bridge. The checked Lean API now defines finite set families, upward
+    closure, covers, p-weight, p-cheap and p-small families, and covering cost.
+    It proves that upward closures are increasing, finite optimal covers exist,
+    covering cost is nonnegative, monotone, zero on the empty family, and
+    subadditive under union, together with the supporting cover-union and
+    weight-union lemmas. No main theorem from the source papers has yet been
+    formalized. Challenge.lean, Solution.lean, comparator.json, and Palomar
+    comparison targets will be added only after a substantive source result has
+    been proved.
   sorry_count: 0
   sorry_in_definitions: 0
   axioms: []
@@ -82,8 +86,8 @@ automation:
       framework: "OpenAI Codex desktop"
       tool_setup: >-
         AI-assisted source research, proof decomposition, Verso Blueprint
-        authoring, foundational Lean API development, dependency setup, and
-        local build verification. Lean checks the linked foundational
+        authoring, foundational and covering-cost Lean API development,
+        dependency setup, and local build verification. Lean checks the linked
         declarations and the Blueprint sources, but it does not certify the
         remaining informal mathematical statements.
       cost:
@@ -94,7 +98,8 @@ automation:
         The maintainer requested a learning-oriented formalization of the
         Park-Pham theorem and a dependency blueprint based on a newer simplified
         proof. The agent proposed the Tran-Vu route, created the initial graph,
-        and assisted with the initial finite-set-family API and Blueprint links.
+        and assisted with the finite-set-family and covering-cost APIs,
+        elementary proofs, and Blueprint links.
     - method: "manual"
       models: []
       framework: "Lean 4, mathlib, and Verso Blueprint"
@@ -114,12 +119,12 @@ automation:
 
 fidelity:
   divergences: >-
-    No source theorem has yet been formalized, so fidelity has not been audited.
-    The blueprint follows the Tran-Vu proof architecture but currently states
-    some strengthened inductive thresholds and numerical side conditions in
-    descriptive rather than final formal form. The probability bridge and exact
-    treatment of boundary cases also remain to be specified. These are planning
-    gaps, not claimed proved results.
+    No main source theorem has yet been formalized, so end-to-end fidelity has
+    not been audited. The blueprint follows the Tran-Vu proof architecture but
+    currently states some strengthened inductive thresholds and numerical side
+    conditions in descriptive rather than final formal form. The probability
+    bridge and exact treatment of boundary cases also remain to be specified.
+    These are planning gaps, not claimed proved results.
 
 review:
   status: "unchecked"
@@ -132,6 +137,20 @@ review:
 alignment:
   namespace: "ParkPham"
   statements:
+    - source: "Park-Pham, definition of p-smallness"
+      lean: "ParkPham.IsPSmall"
+      module: "ParkPham.CoverCosts"
+      status: "formalized"
+      note: >-
+        Defined using a covering family whose p-weight is at most one half.
+    - source: "Park-Pham, elementary properties of the covering cost"
+      lean: "ParkPham.coverCost_union_le"
+      module: "ParkPham.CoverCosts"
+      status: "formalized"
+      note: >-
+        The module also proves nonnegativity, the empty-family value,
+        monotonicity, existence of an optimal finite cover, and the supporting
+        union lemmas.
     - source: "Tran-Vu, Theorem 4 (covering theorem)"
       lean: ""
       module: "planned: ParkPham.Covering"

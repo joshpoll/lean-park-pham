@@ -1,4 +1,6 @@
-import Mathlib
+import Mathlib.Data.Finset.Powerset
+import Mathlib.Data.Fintype.Basic
+import Mathlib.Order.UpperLower.Closure
 
 namespace ParkPham
 
@@ -38,9 +40,6 @@ theorem upperClosure_isUpperSet (ℱ : SetFamily α) :
     IsUpperSet (⟪ℱ⟫ : Set (Finset α)) := by
   rw [SetFamily.coe_upperClosure]
   exact UpperSet.upper _
-
-def Covers (𝒢 ℋ : SetFamily α) : Prop :=
-  ℋ ⊆ ⟪𝒢⟫
 
 namespace UpperClosureExample
 

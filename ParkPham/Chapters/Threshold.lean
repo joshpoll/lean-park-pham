@@ -1,6 +1,7 @@
 import Verso
 import VersoManual
 import VersoBlueprint
+import ParkPham.CoverCosts
 
 open Verso.Genre
 open Verso.Genre.Manual
@@ -15,7 +16,7 @@ probabilistic bridge to the usual statement of the Park–Pham theorem.
 Expectation thresholds, critical thresholds, and the final implication.
 :::
 
-:::definition "p_small" (parent := "threshold_bridge") (uses := "cover, cover_weight") (priority := "high")
+:::definition "p_small" (parent := "threshold_bridge") (uses := "covers, p_cheap") (priority := "high") (lean := "ParkPham.IsPSmall")
 A family $`\mathcal F` is *$`p`-small* if it has a cover $`\mathcal G` with
 $`w_p(\mathcal G)\leq 1/2`.
 :::
@@ -25,7 +26,7 @@ The expectation threshold $`q(\mathcal F)` is the supremum of the parameters
 $`p` for which $`\mathcal F` is $`p`-small.
 :::
 
-:::definition "critical_threshold" (parent := "threshold_bridge") (uses := "bernoulli_measure, increasing_family") (priority := "high")
+:::definition "critical_threshold" (parent := "threshold_bridge") (uses := "bernoulli_measure, is_upper_set") (priority := "high")
 For a nontrivial increasing family $`\mathcal F`, its critical threshold
 $`p_c(\mathcal F)` is the unique parameter at which
 $`\mu_p(\mathcal F)=1/2`, equivalently an appropriate infimum if uniqueness is
